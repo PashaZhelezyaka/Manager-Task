@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Task manager</h1>
+  <form class="taskForm" [formGroup]="form" (ngSubmit)="submit()">
+    <label>Title</label>
+    <input type="text" formControlName="title" placeholder="Add title"/>
+    <label>Description</label>
+    <textarea type="text" formControlName="description" placeholder="Add description"></textarea>
+    <label>Date</label>
+    <input type="text" formControlName="date" placeholder="Add day"/>
+    <button class="submitButton">Save</button>
+  </form>
+  <app-task-list></app-task-list>
+</div>

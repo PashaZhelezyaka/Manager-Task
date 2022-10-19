@@ -1,0 +1,37 @@
+.container {
+  max-width: 600px;
+  min-width: 400px;
+  max-height: 600px;
+  min-height: 500px;
+  border: 2px solid black;
+  margin: 50px auto;
+  text-align: center;
+  border-radius: 10%;
+}
+
+.taskForm {
+  display: flex;
+  max-width: 400px;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.taskForm label {
+  text-align: left;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.taskForm input, textarea {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.submitButton {
+  width: 100px;
+  background: darkseagreen;
+  height: 35px;
+  font-weight: bold;
+  margin: auto;
+  border-radius: 15%;
+}
+
