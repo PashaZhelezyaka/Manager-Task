@@ -34,4 +34,8 @@
   margin: auto;
   border-radius: 15%;
 }
-
+.taskForm small {
+  text-align: left;
+  margin-top: -16px;
+  color: red;
+}

@@ -3,10 +3,16 @@
   <form class="taskForm" [formGroup]="form" (ngSubmit)="submit()">
     <label>Title</label>
     <input type="text" formControlName="title" placeholder="Add title"/>
+    <small *ngIf="form.controls['title'].invalid && form.controls['title'].touched">
+      Please enter the title of the task
+    </small>
     <label>Description</label>
     <textarea type="text" formControlName="description" placeholder="Add description"></textarea>
     <label>Date</label>
-    <input type="text" formControlName="date" placeholder="Add day"/>
+    <input type="text" formControlName="date" placeholder="Completion date"/>
+    <small *ngIf="form.controls['date'].invalid && form.controls['date'].touched">
+      Please enter task completion date
+    </small>
     <button class="submitButton">Save</button>
   </form>
   <app-task-list></app-task-list>
