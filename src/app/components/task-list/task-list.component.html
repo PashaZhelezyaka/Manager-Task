@@ -1,5 +1,11 @@
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
   <div class="example-box" *ngFor="let task of tasks; let i = index" cdkDrag>
+    <mat-icon class="iconClose" (click)="closeTask(task.id)">
+      done
+    </mat-icon>
+    <mat-icon id="create" class="iconClose">
+      create
+    </mat-icon>
     <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
     {{task.title}} Date: {{task.date}}
   </div>

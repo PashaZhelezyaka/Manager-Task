@@ -21,8 +21,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-submit(){
-  console.log(this.form.value)
-}
+  submit() {
+  }
 
 }

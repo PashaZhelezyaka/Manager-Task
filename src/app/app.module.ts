@@ -7,6 +7,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { TaskList } from "../../../interface/interface";
+import {Component, OnInit} from '@angular/core';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import {TaskList} from "../../../interface/interface";
 
 
 @Component({
@@ -10,19 +10,24 @@ import { TaskList } from "../../../interface/interface";
 })
 export class TaskListComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
   tasks: TaskList[] = [
-    {id: Date.now() ,title: "task1", description: "learn ng", date:"2022-10-12"},
-    {id: Date.now() ,title: "task2", description: "learn ts", date:"2022-10-12"},
-    {id: Date.now() ,title: "task3", description: "learn ngrx", date:"2022-10-12"},
+    {id: 1/*Date.now()*/, title: "task1", description: "learn ng", date: "2022-10-12"},
+    {id: 2/*Date.now()*/, title: "task2", description: "learn ts", date: "2022-10-12"},
+    {id: 3/*Date.now()*/, title: "task3", description: "learn ngrx", date: "2022-10-12"},
   ];
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+  }
+
+  closeTask(idTask: number) {
+    this.tasks = this.tasks.filter(el => el.id !== idTask);
   }
 
 }
