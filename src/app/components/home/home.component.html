@@ -8,8 +8,8 @@
     </small>
     <label>Description</label>
     <textarea type="text" formControlName="description" placeholder="Add description"></textarea>
-    <label>Date</label>
-    <input type="text" formControlName="date" placeholder="Completion date"/>
+    <label>Completion date</label>
+    <input type="date" formControlName="date" placeholder="Completion date"/>
     <small *ngIf="form.controls['date'].invalid && form.controls['date'].touched">
       Please enter task completion date
     </small>

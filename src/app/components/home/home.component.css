@@ -1,7 +1,6 @@
 .container {
   max-width: 600px;
   min-width: 400px;
-  max-height: 600px;
   min-height: 500px;
   border: 2px solid black;
   margin: 50px auto;
