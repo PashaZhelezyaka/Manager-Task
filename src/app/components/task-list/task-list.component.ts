@@ -17,9 +17,27 @@ export class TaskListComponent implements OnInit {
   }
 
   tasks: TaskList[] = [
-    {id: 1/*Date.now()*/, title: "task1", description: "learn ng", date: "2022-10-12"},
-    {id: 2/*Date.now()*/, title: "task2", description: "learn ts", date: "2022-10-12"},
-    {id: 3/*Date.now()*/, title: "task3", description: "learn ngrx", date: "2022-10-12"},
+    {
+      id: 1/*Date.now()*/,
+      title: "task1",
+      description: "learn ng",
+      date: "2022-10-12",
+      open: false
+    },
+    {
+      id: 2/*Date.now()*/,
+      title: "task2",
+      description: "learn ts",
+      date: "2022-10-12",
+      open: false
+    },
+    {
+      id: 3/*Date.now()*/,
+      title: "task3",
+      description: "learn ngrx",
+      date: "2022-10-12",
+      open: false
+    },
   ];
 
   drop(event: CdkDragDrop<string[]>) {
@@ -28,6 +46,10 @@ export class TaskListComponent implements OnInit {
 
   closeTask(idTask: number) {
     this.tasks = this.tasks.filter(el => el.id !== idTask);
+  }
+
+  openDescription(idTask: number) {
+    this.tasks.find(task => task.id === idTask)!.open = !this.tasks.find(task => task.id === idTask)!.open
   }
 
 }
