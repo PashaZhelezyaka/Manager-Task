@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {TaskList} from "../../../interface/interface";
+import {TaskServiceService} from "../../services/task-service.service";
 
 
 @Component({
@@ -10,35 +11,14 @@ import {TaskList} from "../../../interface/interface";
 })
 export class TaskListComponent implements OnInit {
 
-  constructor() {
+  tasks: TaskList[] = []
+
+  constructor(private taskService: TaskServiceService) {
   }
 
   ngOnInit(): void {
+    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks)
   }
-
-  tasks: TaskList[] = [
-    {
-      id: 1/*Date.now()*/,
-      title: "task1",
-      description: "learn ng",
-      date: "2022-10-12",
-      open: false
-    },
-    {
-      id: 2/*Date.now()*/,
-      title: "task2",
-      description: "learn ts",
-      date: "2022-10-12",
-      open: false
-    },
-    {
-      id: 3/*Date.now()*/,
-      title: "task3",
-      description: "learn ngrx",
-      date: "2022-10-12",
-      open: false
-    },
-  ];
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
@@ -47,6 +27,7 @@ export class TaskListComponent implements OnInit {
   closeTask(idTask: number) {
     this.tasks = this.tasks.filter(el => el.id !== idTask);
   }
+
 
   openDescription(idTask: number) {
     this.tasks.find(task => task.id === idTask)!.open = !this.tasks.find(task => task.id === idTask)!.open

@@ -5,3 +5,10 @@ export interface TaskList {
   date: string,
   open: boolean,
 }
+
+export interface SubmitTask {
+  title: string,
+  description: string,
+  date: string,
+
+}

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TaskServiceService} from "../../services/task-service.service";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   form!: FormGroup
 
-  constructor() {
+  constructor(private tasksService: TaskServiceService) {
   }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   submit() {
+    this.tasksService.addedTask(this.form.value)
   }
 
 }
