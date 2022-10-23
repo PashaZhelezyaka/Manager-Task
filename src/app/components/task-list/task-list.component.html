@@ -1,5 +1,9 @@
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let task of tasks; let i = index" cdkDrag
+  <div class="example-box"
+       [ngClass]="{
+       statusThreeDay: dateComparison(dateNow, task.date, 'threeDay'),
+        statusEndDay:dateComparison(dateNow, task.date)}"
+       *ngFor="let task of tasks; let i = index" cdkDrag
        (click)="openDescription(task.id)">
     <mat-icon class="iconClose" (click)="closeTask(task.id)">
       done
@@ -8,7 +12,7 @@
       create
     </mat-icon>
     <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-    {{task.title}} Date: {{task.date}}
+    <b>{{task.title}}</b> Date of completion: {{task.date}}
     <div class="description" *ngIf="task.open">{{task.description}}</div>
   </div>
 </div>

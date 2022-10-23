@@ -12,7 +12,7 @@ import {ModalWindowComponent} from "../modal-window/modal-window.component";
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-
+  dateNow = new Date().toLocaleDateString()
   tasks: TaskList[] = [];
 
   constructor(private taskService: TaskServiceService, public dialog: MatDialog) {
@@ -20,6 +20,8 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks)
+    console.log(this.dateNow)
+    console.log(this.tasks[0].date.split("").reverse().join("").replace(/-/gi, '.').split('.'))
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -40,6 +42,34 @@ export class TaskListComponent implements OnInit {
       width: '250px',
       data: {task, tasks: this.tasks}
     });
+  }
+
+  dateComparison(dateNow: string, dateTask: string, term?: string): boolean {
+    let dateTaskArray = dateTask.split("").join("").split('-').reverse();
+    let dateNowArray = dateNow.split('.');
+    let result: boolean = false;
+    if (term === "threeDay" && dateTaskArray[2] === dateNowArray[2] && dateTaskArray[1] === dateNowArray[1]) {
+      if (
+        dateNowArray[0] === "31" && dateTaskArray[0] === "2" && +dateNowArray[1] < +dateTaskArray[1] ||
+        dateNowArray[0] === "30" && dateTaskArray[0] === "2" && +dateNowArray[1] < +dateTaskArray[1] ||
+        dateNowArray[0] === "30" && dateTaskArray[0] === "1" && +dateNowArray[1] < +dateTaskArray[1] ||
+        dateNowArray[0] === "29" && dateTaskArray[0] === "1" && +dateNowArray[1] < +dateTaskArray[1] ||
+        dateNowArray[0] === "29" && dateTaskArray[0] === "2" && +dateNowArray[1] < +dateTaskArray[1] ||
+        dateNowArray[0] === "28" && dateTaskArray[0] === "1" && +dateNowArray[1] < +dateTaskArray[1] ||
+                                                          +dateNowArray[0] === +dateTaskArray[0] + 2 ||
+                                                          +dateNowArray[0] === +dateTaskArray[0] + 1
+      )
+      {
+        result = true
+      }
+    } else if (dateTaskArray[2] === dateNowArray[2] && dateTaskArray[1] === dateNowArray[1] &&
+                                                  +dateTaskArray[0] <= +dateNowArray[0] - 3 ||
+      dateTaskArray[2] === dateNowArray[2] && dateTaskArray[1] === dateNowArray[1] &&
+                                                  dateTaskArray[0] === dateNowArray[0]
+    ) {
+      result = true
+    }
+    return result
   }
 
 }
