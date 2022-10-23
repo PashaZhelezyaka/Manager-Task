@@ -12,3 +12,8 @@ export interface SubmitTask {
   date: string,
 
 }
+
+export interface DataModalChangeWindow {
+  task: TaskList,
+  tasks: TaskList[]
+}

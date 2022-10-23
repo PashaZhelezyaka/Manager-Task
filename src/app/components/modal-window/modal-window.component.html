@@ -1,5 +1,4 @@
 <div class="container">
-  <h1>Task manager</h1>
   <form class="taskForm" [formGroup]="form" (ngSubmit)="submit()">
     <label>Title</label>
     <input type="text" formControlName="title" placeholder="Add title"/>
@@ -8,9 +7,6 @@
     </small>
     <label>Description</label>
     <textarea type="text" formControlName="description" placeholder="Add description"></textarea>
-    <small *ngIf="form.controls['description'].invalid && form.controls['description'].touched">
-      Please enter  the description of the task
-    </small>
     <label>Completion date</label>
     <input type="date" formControlName="date" placeholder="Completion date"/>
     <small *ngIf="form.controls['date'].invalid && form.controls['date'].touched">
@@ -18,5 +14,4 @@
     </small>
     <button [disabled]="form.invalid" class="submitButton">Save</button>
   </form>
-  <app-task-list></app-task-list>
 </div>

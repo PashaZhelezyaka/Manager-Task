@@ -1,0 +1,35 @@
+.containerModal {
+  text-align: center;
+}
+
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.taskForm label {
+  text-align: left;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.taskForm input, textarea {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.submitButton {
+  width: 100px;
+  background: darkseagreen;
+  height: 35px;
+  font-weight: bold;
+  margin: auto;
+  border-radius: 15%;
+}
+
+.taskForm small {
+  text-align: left;
+  margin-top: -16px;
+  color: red;
+}

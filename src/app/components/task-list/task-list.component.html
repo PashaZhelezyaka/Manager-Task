@@ -4,7 +4,7 @@
     <mat-icon class="iconClose" (click)="closeTask(task.id)">
       done
     </mat-icon>
-    <mat-icon id="create" class="iconClose">
+    <mat-icon id="create" class="iconClose" (click)="openDialog(task)">
       create
     </mat-icon>
     <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
